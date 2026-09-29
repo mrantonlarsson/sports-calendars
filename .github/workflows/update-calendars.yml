@@ -1,0 +1,49 @@
+name: Update calendars
+
+on:
+  schedule:
+    # Dagligen 05:17 UTC. Tätare är meningslöst: Google hämtar externa
+    # ICS-flöden ungefär en gång per dygn oavsett vad vi gör.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-calendars
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Ett trasigt flöde ska inte stoppa de andra från att publiceras, men
+      # jobbet ska ändå bli rött så att det syns.
+      - id: build
+        continue-on-error: true
+        run: python build.py
+
+      - name: Commit changed feeds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --staged --quiet; then
+            echo "Inga ändringar att publicera."
+          else
+            git commit -m "Uppdatera kalendrar"
+            git push
+          fi
+
+      - name: Fail if a feed could not be built
+        if: steps.build.outcome == 'failure'
+        run: exit 1

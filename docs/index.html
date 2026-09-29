@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Kalenderflöden</title>
+<style>
+  :root { color-scheme: light dark; --bg: #fbfaf8; --fg: #1a1a18; --muted: #6b6b66; --line: #e3e0da; --card: #fff; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1a1a18; --fg: #f0eee9; --muted: #9a978f; --line: #33322e; --card: #232320; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 48px 16px; background: var(--bg); color: var(--fg);
+         font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 34rem; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 .35em; letter-spacing: -.01em; }
+  p.lede { color: var(--muted); margin: 0 0 2rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+  li { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.15rem; }
+  .name { font-weight: 600; }
+  .desc { color: var(--muted); font-size: .9rem; margin: .15rem 0 .7rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .9rem; }
+  a { color: inherit; text-underline-offset: 3px; }
+  footer { margin-top: 2.5rem; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Kalenderflöden</h1>
+  <p class="lede">Prenumerera i stället för att importera – matchtider som ändras följer med.</p>
+
+  <ul>
+    <li>
+      <div class="name">🦚 Frölunda HC</div>
+      <div class="desc">SHL och CHL, inklusive slutspel när det lottats.</div>
+      <div class="links">
+        <a href="webcal://mrantonlarsson.github.io/sports-calendars/frolunda.ics">Prenumerera</a>
+        <a href="frolunda.ics">Ladda ned .ics</a>
+      </div>
+    </li>
+    <li>
+      <div class="name">🇸🇪 Herrlandslaget i fotboll</div>
+      <div class="desc">Kommande landskamper enligt Svensk Fotboll.</div>
+      <div class="links">
+        <a href="webcal://mrantonlarsson.github.io/sports-calendars/landslaget-fotboll.ics">Prenumerera</a>
+        <a href="landslaget-fotboll.ics">Ladda ned .ics</a>
+      </div>
+    </li>
+    <li>
+      <div class="name">🇸🇪🏒 Tre Kronor herr</div>
+      <div class="desc">Euro Hockey Tour och VM-gruppspelet.</div>
+      <div class="links">
+        <a href="webcal://mrantonlarsson.github.io/sports-calendars/tre-kronor.ics">Prenumerera</a>
+        <a href="tre-kronor.ics">Ladda ned .ics</a>
+      </div>
+    </li>
+  </ul>
+
+  <footer>
+    Uppdateras dagligen. 🏟️ betyder hemmamatch, 🇪🇺 CHL, 🏆 VM.
+  </footer>
+</main>
+</body>
+</html>
